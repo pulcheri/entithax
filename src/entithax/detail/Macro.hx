@@ -32,7 +32,10 @@ class Macro {
     public static macro function getComponentId(object:ExprOf<Component>): Expr {
         var name = switch (Context.typeof(object)) {
             case TInst(_.get() => t, _): t.name;
-            case _: throw "object type not found";
+            case _: {
+				trace(object);
+				throw "object type not found";
+			}
         }
         return macro $i{name}.id_;
     }

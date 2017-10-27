@@ -10,7 +10,8 @@ typedef ComponentIdArray = Array<Int>;
 #if !macro 
 //@:remove
 @:autoBuild(entithax.detail.Macro.build_id())
+@:autoBuild(entithax.detail.BuildComponent.complete())
 #end
-class Component {
+interface Component {
 	
 }
