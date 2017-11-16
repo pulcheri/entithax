@@ -5,6 +5,7 @@ import haxe.macro.Context;
 import haxe.macro.Expr;
 import haxe.macro.Type;
 import haxe.macro.Tools;
+import haxe.macro.ExprTools;
 
 
 import entithax.Component;
@@ -29,6 +30,9 @@ class Macro {
 	}
 //#end
 
+
+
+
     public static macro function getComponentId(object:ExprOf<Component>): Expr {
         var name = switch (Context.typeof(object)) {
             case TInst(_.get() => t, _): t.name;
@@ -37,8 +41,17 @@ class Macro {
 				throw "object type not found";
 			}
         }
+		trace(name);
         return macro $i{name}.id_;
     }
+
+	public static macro function getComponentId2(e:Expr) {
+		//var nameCode : String = ExprTools.toString(e);
+		//var name = Context.parse(nameCode, Context.currentPos());
+		var name =  macro $e;
+
+		return name;
+	}
 
 	private static var nextId_ = 0;
 }

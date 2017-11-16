@@ -1,6 +1,9 @@
 package entithax.detail;
 
 
+#if macro
+
+
 import haxe.macro.Context;
 import haxe.macro.Expr;
 import haxe.macro.Type;
@@ -8,6 +11,7 @@ using thx.macro.MacroFields;
 
 //import edge.core.macro.Macros.*;
 import entithax.detail.Macros.*;
+
 
 class BuildComponent {
   macro public static function complete() : Array<Field> {
@@ -73,3 +77,5 @@ class BuildComponent {
     );
   }
 }
+
+#end

@@ -64,6 +64,10 @@ class Entity  {
 		totalComponents_ = totalComponents;
 		componentPools_ = componentPools;
 		components = new Components(totalComponents);
+		// FIXME not sure we need this
+		for (i in 0...components.length) {
+			components[i] = null;
+		}
 	}
 	
 	inline private function enabledThrow() {
@@ -182,6 +186,17 @@ class Entity  {
 				replaceImpl(i, null);
 			}
 		}
+	}
+
+	public function getAllComponents() {
+		var ret = new Array<Component>();
+		for (i in 0...components.length) {
+			if (hasComponent(i)) {
+				//replaceImpl(i, null);
+				ret.push(getComponent(i));
+			}
+		}
+		return ret;
 	}
 
 	public function destroy() {
